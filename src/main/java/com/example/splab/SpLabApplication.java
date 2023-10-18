@@ -8,7 +8,7 @@ public class SpLabApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpLabApplication.class, args);
-		//hsdfbgkubrusd
+		//yeeeeeeeeeeeeeeeeeeeey
 	}
 
 }
