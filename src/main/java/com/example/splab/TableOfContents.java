@@ -1,19 +1,24 @@
 package com.example.splab;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class TableOfContents {
-    private ArrayList<String> chapters;
-    private Book book;
+public class TableOfContents implements Element {
+    private List<Element> elementList;
 
-    public void addChapter(String chapterTitle) {
-        chapters.add(chapterTitle);
+    public void print(){}
+
+    @Override
+    public void add(Element e) {
+        elementList.add(e);
     }
 
-    public void print() {
-        System.out.println("Table of Contents for " + ":"); // + book.getTitle() + ":");
-        for (int i = 0; i < chapters.size(); i++) {
-            System.out.println("Chapter " + (i + 1) + ": " + chapters.get(i));
-        }
+    @Override
+    public void remove(Element e) {
+        elementList.remove(e);
+    }
+
+    @Override
+    public Element get(int index) {
+        return elementList.get(index);
     }
 }
