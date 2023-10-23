@@ -1,36 +1,37 @@
 package com.example.splab;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubChapter {
     private String name;
-    private ArrayList<Element> elements;
+    private List<Element> elementList;
 
     public SubChapter(String name) {
         this.name = name;
-        this.elements=new ArrayList<>();
-    }
-
-    public void createNewParagraph(String name){
-        Paragraph paragraph=new Paragraph(name);
-        elements.add(paragraph);
-    }
-
-    public void createNewImage(String name){
-        Image image=new Image(name);
-        elements.add(image);
-    }
-
-    public void createNewTable(String name){
-        Table table=new Table(name);
-        elements.add(table);
+        elementList = new ArrayList<>();
     }
 
     public void print() {
-        System.out.println("Subchapter: " + name);
-        System.out.print("Elements within Subchapter: ");
-        for (Element element : elements) {
+        System.out.printf("Subchapter: %s%n", name);
+        for (Element element :
+                elementList) {
             element.print();
         }
+    }
+
+    public void createNewParagraph(String paragraphName) {
+        Element newParagraph = new Paragraph(paragraphName);
+        elementList.add(newParagraph);
+    }
+
+    public void createNewImage(String imageName) {
+        Element newImage = new Image(imageName);
+        elementList.add(newImage);
+    }
+
+    public void createNewTable(String tableName) {
+        Element newTable = new Table(tableName);
+        elementList.add(newTable);
     }
 }

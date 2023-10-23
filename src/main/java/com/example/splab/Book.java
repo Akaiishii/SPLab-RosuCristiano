@@ -1,49 +1,39 @@
 package com.example.splab;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Book {
-    private String title;
-    private ArrayList<Chapter> chapters;
-    private ArrayList<Author> authors;
-
+public class Book extends Section {
+    private TableOfContents tableOfContentList;
+    private List<Author> authorList;
 
     public Book(String title) {
-        this.title = title;
-        this.authors = new ArrayList<>();
-        this.chapters = new ArrayList<>();
+        super(title);
+        authorList = new ArrayList<>();
     }
 
+    @Override
+    public void print(){
+        System.out.println("Book: " + title );
+        System.out.println();
 
-    public void addChapter(String chapterTitle) {
-        Chapter chapter = new Chapter(chapterTitle);
-        chapters.add(chapter);
-    }
+        System.out.println("Authors: ");
+        for (Author author :
+                authorList) {
+            author.print();
+        }
+        System.out.println();
 
-    public int createChapter(String chapterTitle) {
-        Chapter chapter = new Chapter(chapterTitle);
-        chapters.add(chapter);
-        return chapters.indexOf(chapter);
-    }
+        for (Element element :
+                elementList) {
+            element.print();
+        }
 
-    public Chapter getChapter(int indexChapterOne){
-        return chapters.get(indexChapterOne);
+
     }
 
     public void addAuthor(Author author) {
-        authors.add(author);
-    }
-
-    public void print() {
-        System.out.println("Title: " + title);
-        System.out.println("Authors:");
-        for (Author author : authors) {
-            author.print();
-        }
-        System.out.println("Chapters:");
-        for (Chapter chapter : chapters) {
-            chapter.print();
-        }
+        this.authorList.add(author);
     }
 
 }
