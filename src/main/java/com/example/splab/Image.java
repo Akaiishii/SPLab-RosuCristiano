@@ -1,30 +1,35 @@
 package com.example.splab;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class Image implements Element {
-    private String imageName;
+public class Image extends Element implements Picture {
+    private String url;
+    private String imageContent;
 
-    public Image(String imageName) {
-        this.imageName = imageName;
+    public Image(String url) {
+        this.url = url;
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public Image(Image other){
+        url = other.url;
     }
 
     public void print(){
-        System.out.println("Image with name: " + imageName);
+        System.out.println("Image with name: " + url);
     }
 
     @Override
-    public void add(Element e) {
-        throw new IllegalStateException("Cannot add an element");
+    public Element clone() {
+        return new Image(this);
     }
 
     @Override
-    public void remove(Element e) {
-        throw new IllegalStateException("Cannot remove an element");
-    }
-
-    @Override
-    public Element get(int index) {
-        throw new IllegalStateException("Cannot get an element");
+    public String getUrl() {
+        return url;
     }
 }

@@ -1,7 +1,5 @@
 package com.example.splab;
 
-
-
 public class Author {
 
     private String name;
@@ -15,6 +13,13 @@ public class Author {
         this.name = name;
         this.surname = surname;
     }
+
+    public Author(Author author){
+        this.name = author.name;
+        this.surname = author.surname;
+    }
+
+
 
     public void print(){
         System.out.println("Author: " + name);

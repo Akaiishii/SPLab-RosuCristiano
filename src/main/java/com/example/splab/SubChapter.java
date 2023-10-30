@@ -12,6 +12,11 @@ public class SubChapter {
         elementList = new ArrayList<>();
     }
 
+    public SubChapter(SubChapter other){
+        this.name = other.name;
+        this.elementList = new ArrayList<>(other.elementList);
+    }
+
     public void print() {
         System.out.printf("Subchapter: %s%n", name);
         for (Element element :
