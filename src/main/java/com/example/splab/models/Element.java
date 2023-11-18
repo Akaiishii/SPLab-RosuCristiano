@@ -1,17 +1,20 @@
-package com.example.splab;
+package com.example.splab.models;
+
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Element {
+public abstract class Element implements Visitee {
 
+    @Getter
     protected List<Element> elementList;
     public Element() {
         this.elementList = new ArrayList<>();
     }
 
     public void add(Element e) {
-//        elementList.add(e.clone());
+//        el
         elementList.add(e);
     }
     public void remove(Element e) {
@@ -21,6 +24,5 @@ public abstract class Element {
         return elementList.get(index);
     }
 
-    public abstract void print();
     public abstract Element clone();
 }
