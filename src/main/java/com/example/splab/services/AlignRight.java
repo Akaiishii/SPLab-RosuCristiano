@@ -1,4 +1,4 @@
-package com.example.splab;
+package com.example.splab.services;
 
 public class AlignRight implements AlignStrategy{
     @Override
