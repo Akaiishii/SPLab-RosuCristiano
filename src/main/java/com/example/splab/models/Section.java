@@ -1,14 +1,19 @@
 package com.example.splab.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
-
+@Getter
+@Setter
 public class Section extends Element implements Visitee {
-
-
-    @Getter
     protected String title;
+
+    public Section() {
+        title = "";
+        elementList = new ArrayList<>();
+    }
 
     public Section(String title) {
         this.title = title;
