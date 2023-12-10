@@ -2,9 +2,7 @@ package com.example.splab;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.splab.models.*;
-import com.example.splab.services.BookStatistics;
-import com.example.splab.services.RenderContentVisitor;
-import com.example.splab.services.TableOfContentUpdate;
+import com.example.splab.services.BookSaveVisitor;
 
 @SpringBootApplication
 public class SpLabApplication {
@@ -16,6 +14,7 @@ public class SpLabApplication {
 	}
 
 	public static void createTableOfContent() {
+
 		Book b = new Book("The book");
 		Section cap1 = new Section("Chapter 1");
 		Section cap11 = new Section("Subchapter 1.1");
@@ -34,9 +33,13 @@ public class SpLabApplication {
 		cap1.add(new Table("Table 1"));
 		b.add(cap1);
 		b.add(cap2);
-		TableOfContentUpdate tocUpdate = new TableOfContentUpdate();
-		b.accept(tocUpdate);
-		tocUpdate.getToC().accept(new RenderContentVisitor());
+//        TableOfContentUpdate tocUpdate = new TableOfContentUpdate();
+//        b.accept(tocUpdate);
+//        tocUpdate.getToC().accept(new RenderContentVisitor());
+		BookSaveVisitor saveVisitor = new BookSaveVisitor();
+		b.accept(saveVisitor);
+		System.out.println(saveVisitor.getJson());
+
 	}
 
 
