@@ -1,4 +1,4 @@
-package com.example.splab.services.commands;
+package com.example.splab.commands;
 
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

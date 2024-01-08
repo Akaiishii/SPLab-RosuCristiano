@@ -1,12 +1,12 @@
-package com.example.splab.services.commands;
+package com.example.splab.commands;
 
-import com.example.splab.models.Repository;
+import com.example.splab.persistence.CrudRepository;
 
-public class AddOneCommand<T> implements Command<Void, T>{
-    private final Repository<T> repository;
+public class AddOneCommand<T> implements Command<T, T>{
+    private final CrudRepository<T, Long> repository;
     private T commandContext;
 
-    public AddOneCommand(Repository<T> repository) {
+    public AddOneCommand(CrudRepository<T, Long> repository) {
         this.repository = repository;
     }
     private AddOneCommand(AddOneCommand<T> aoc) {
@@ -19,14 +19,13 @@ public class AddOneCommand<T> implements Command<Void, T>{
     }
 
     @Override
-    public Command<Void, T> getClone() {
+    public Command<T, T> getClone() {
         return new AddOneCommand<>(this);
     }
 
     @Override
-    public Void execute() {
-        repository.add(commandContext);
-        return null;
+    public T execute() {
+        return repository.save(commandContext);
     }
 
 
