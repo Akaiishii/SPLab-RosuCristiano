@@ -1,10 +1,15 @@
 package com.example.splab.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Getter;
 
 import java.util.ArrayList;
+@Entity
+@jakarta.persistence.Table(name = "ContentTable")
+public class Table extends BaseElement implements Visitee {
 
-public class Table extends Element implements Visitee {
     @Getter
     private String title;
 
@@ -17,12 +22,11 @@ public class Table extends Element implements Visitee {
     }
     public Table(Table other){
         this.title = other.title;
-        this.elementList = new ArrayList<>(other.elementList);
     }
 
 
     @Override
-    public Element clone() {
+    public BaseElement clone() {
         return new Table(this);
     }
 

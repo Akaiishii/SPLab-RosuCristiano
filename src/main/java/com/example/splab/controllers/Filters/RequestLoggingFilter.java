@@ -1,4 +1,4 @@
-package com.example.splab.services.Filters;
+package com.example.splab.controllers.Filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

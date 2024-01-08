@@ -1,4 +1,4 @@
-package com.example.splab.services.commands;
+package com.example.splab.commands;
 
 public interface Command<TReturn, TCommandContext> {
     public TReturn execute();

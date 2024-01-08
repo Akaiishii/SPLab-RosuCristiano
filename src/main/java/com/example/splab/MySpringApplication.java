@@ -3,6 +3,9 @@ package com.example.splab;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.example.splab.difexamples.ClientComponent;
 import com.example.splab.difexamples.SingletonComponent;
 import com.example.splab.difexamples.TransientComponent;
@@ -16,6 +19,16 @@ public class MySpringApplication {
         DiExamples(context);
 
 
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**");
+            }
+        };
     }
 
 
